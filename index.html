@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezanur Pay</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/logo/white_logo-removebg-preview.png" type="image/x-icon">
+
+    <!-- tailwind+daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- all theme  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
+    <!-- outfit font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        * {
+            font-family: "Outfit", sans-serif;
+        }
+    </style>
+
 </head>
-<body>
-    
+
+<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+
+    <!-- logo for login page -->
+    <div class="logo w-[300px] mx-auto pt-60">
+        <img src="assets/logo/white_full_logo-removebg-preview.png" alt="">
+
+    </div>
+
+    <!-- login form -->
+
+<section class="form pt-10">
+        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm mx-auto rounded-2xl">
+        <div class="card-body">
+            <fieldset class="fieldset">
+                <label class="label text-neutral font-bold">Mobile Number</label>
+                <input maxlength="11" minlength="11" type="tel" class="input rounded-full bg-base-200" placeholder="Enter Your 11 Digit Number" />
+                <label class="labe text-neutral font-bold pt-1">4 Digit Pin</label>
+                <input type="password" minlength="4" maxlength="4"  class="input rounded-full bg-base-200" placeholder="Enter 4 Digit Pin" />
+                
+                <button class="btn btn-primary mt-4 rounded-full">Login</button>
+            </fieldset>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script src="script/login.js"></script>
 </body>
+
 </html>
