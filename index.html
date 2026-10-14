@@ -40,6 +40,58 @@
         .ambient-glow {
             background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.10) 0%, rgba(79, 70, 229, 0.04) 50%, transparent 80%);
         }
+
+        /* Dark Mode Theme Overrides */
+        [data-theme="dark"] body {
+            background-color: #0b1120 !important;
+            color: #f1f5f9 !important;
+        }
+
+        [data-theme="dark"] .bg-white {
+            background-color: #1e293b !important;
+            color: #f1f5f9 !important;
+        }
+
+        [data-theme="dark"] .bg-slate-50 {
+            background-color: #0f172a !important;
+        }
+
+        [data-theme="dark"] .bg-slate-100 {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .bg-blue-50\/70 {
+            background-color: rgba(30, 41, 59, 0.8) !important;
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .text-slate-900,
+        [data-theme="dark"] .text-slate-800,
+        [data-theme="dark"] .text-slate-700 {
+            color: #f8fafc !important;
+        }
+
+        [data-theme="dark"] .text-slate-600 {
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .text-slate-500,
+        [data-theme="dark"] .text-slate-400 {
+            color: #94a3b8 !important;
+        }
+
+        [data-theme="dark"] .border-slate-100,
+        [data-theme="dark"] .border-slate-200,
+        [data-theme="dark"] .border-slate-200\/80 {
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .input {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
     </style>
 </head>
 
@@ -51,10 +103,17 @@
         <!-- Ambient decorative backdrop glow -->
         <div class="ambient-glow absolute inset-0 pointer-events-none"></div>
 
+        <!-- Header Top Actions (Theme Toggle) -->
+        <div class="absolute top-4 right-4 z-20">
+            <button type="button" id="theme-toggle-btn" class="btn btn-sm btn-ghost btn-circle text-slate-600 hover:bg-slate-200/60 rounded-xl border border-slate-200" title="Toggle Night/Light Theme">
+                <i class="fa-solid fa-moon text-sm" id="theme-icon"></i>
+            </button>
+        </div>
+
         <!-- Brand Logo Header -->
         <header class="pt-10 px-6 z-10 text-center">
             <div class="inline-block transition-transform hover:scale-105 duration-300">
-                <img src="assets/logo/rezanur_pay_logo.svg" alt="Rezanur Pay Logo" class="h-16 w-auto mx-auto drop-shadow-xs">
+                <img id="login-brand-logo" src="assets/logo/rezanur_pay_logo.svg" alt="Rezanur Pay Logo" class="h-16 w-auto mx-auto drop-shadow-xs">
             </div>
             <h1 class="text-2xl font-black tracking-tight text-slate-900 mt-4">Welcome Back</h1>
             <p class="text-xs text-slate-500 mt-1">Log in securely to your digital wallet</p>
@@ -148,7 +207,8 @@
 
     </div>
 
-    <!-- Script -->
+    <!-- Scripts -->
+    <script src="script/theme.js"></script>
     <script src="script/login.js"></script>
 </body>
 

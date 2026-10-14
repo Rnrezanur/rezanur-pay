@@ -35,6 +35,101 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Dark Mode Theme Overrides */
+        [data-theme="dark"] body {
+            background-color: #0b1120 !important;
+            color: #f1f5f9 !important;
+        }
+
+        [data-theme="dark"] .bg-white {
+            background-color: #1e293b !important;
+            color: #f1f5f9 !important;
+        }
+
+        [data-theme="dark"] .bg-slate-50 {
+            background-color: #0f172a !important;
+        }
+
+        [data-theme="dark"] .bg-slate-100 {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .bg-slate-200,
+        [data-theme="dark"] .bg-slate-200\/60,
+        [data-theme="dark"] .bg-slate-200\/70,
+        [data-theme="dark"] .bg-slate-200\/80,
+        [data-theme="dark"] .bg-slate-200\/90 {
+            background-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .text-slate-900,
+        [data-theme="dark"] .text-slate-800,
+        [data-theme="dark"] .text-slate-700 {
+            color: #f8fafc !important;
+        }
+
+        [data-theme="dark"] .text-slate-600 {
+            color: #cbd5e1 !important;
+        }
+
+        [data-theme="dark"] .text-slate-500,
+        [data-theme="dark"] .text-slate-400 {
+            color: #94a3b8 !important;
+        }
+
+        [data-theme="dark"] .border-slate-100,
+        [data-theme="dark"] .border-slate-200,
+        [data-theme="dark"] .border-slate-200\/60,
+        [data-theme="dark"] .border-slate-200\/70,
+        [data-theme="dark"] .border-slate-200\/80,
+        [data-theme="dark"] .border-slate-200\/90 {
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .input,
+        [data-theme="dark"] .select {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+
+        [data-theme="dark"] .modal-box {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] header,
+        [data-theme="dark"] nav {
+            background-color: rgba(30, 41, 59, 0.95) !important;
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .btn-tab {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .btn-tab:hover {
+            background-color: #334155 !important;
+        }
+
+        [data-theme="dark"] .btn-tab.border-blue-600 {
+            background-color: rgba(30, 58, 138, 0.4) !important;
+            border-color: #3b82f6 !important;
+        }
+
+        [data-theme="dark"] #btn-show-balance {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #e2e8f0 !important;
+        }
+
+        [data-theme="dark"] #btn-show-balance #balance-pill-amount {
+            color: #f8fafc !important;
+        }
     </style>
 </head>
 
@@ -63,8 +158,11 @@
                     </div>
                 </div>
 
-                <!-- Right: Logout Action -->
-                <div>
+                <!-- Right: Theme Toggle & Logout Action -->
+                <div class="flex items-center gap-2">
+                    <button type="button" id="theme-toggle-btn" class="btn btn-sm btn-ghost btn-circle text-slate-600 hover:bg-slate-100 rounded-xl border border-slate-200" title="Toggle Night/Light Theme">
+                        <i class="fa-solid fa-moon text-sm" id="theme-icon"></i>
+                    </button>
                     <a href="index.html" class="btn btn-sm btn-ghost text-slate-600 hover:text-rose-600 hover:bg-rose-50 gap-1.5 rounded-xl border border-slate-200 px-3 font-semibold" title="Logout">
                         <i class="fa-solid fa-right-from-bracket text-xs"></i>
                         <span class="text-xs">Logout</span>
@@ -675,6 +773,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="script/theme.js"></script>
     <script src="script/wallet.js"></script>
     <script src="script/toggle.js"></script>
     <script src="script/addMoney.js"></script>
