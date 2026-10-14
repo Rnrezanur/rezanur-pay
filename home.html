@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezanur Pay | Home</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/logo/white_logo-removebg-preview.png" type="image/x-icon">
+
+    <!-- tailwind+daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- all theme  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
+    <!-- outfit font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            font-family: "Outfit", sans-serif;
+        }
+    </style>
+
+</head>
+
+<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+
+    <header class="border-b-2 border-gray-300">
+        <section class="2-11/12 mx-auto py-3 flex justify-between items-center">
+
+            <div class="left flex ">
+                <div class="logo w-[60px] px-2">
+                    <img src="assets/logo/white_logo-removebg-preview.png" alt="logo-of website">
+                </div>
+
+                <div class="balance-info ">
+                    <h2 class="text-2xl font-bold">$ <span id="balance">45000</span></h2>
+                    <p class="text-neutral/50">Available Balance</p>
+                </div>
+
+            </div>
+
+
+            <div class="right">
+                <a href="index.html" class="btn btn-soft pr-4">
+                    <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
+                </a>
+            </div>
+
+
+        </section>
+    </header>
+
+<section class="w-11/12 mx-auto py-10">
+    <div class="text-2xl font-bold">
+        Welcome to Rezanur <span class="text-blue-600">pay</span>
+    </div>
+
+    <p class="text-neutral/50 py-4">
+        Enjoy easy and convenient financial services with us. Cashout charge is low.
+    </p>
+
+    <!-- Single Grid Container for all 6 buttons -->
+    <div class="buttons grid grid-cols-3 gap-3">
+        <!-- 1. Add Money -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-1.png" alt="add money">
+            <span class="text-xs">Add Money</span>
+        </button>
+
+        <!-- 2. Cashout -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-2.png" alt="cashout">
+            <span class="text-xs">Cashout</span>
+        </button>
+
+        <!-- 3. Send Money -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-3.png" alt="send money">
+            <span class="text-xs">Send Money</span>
+        </button>
+
+        <!-- 4. Get Bonus -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-4.png" alt="get bonus">
+            <span class="text-xs">Get Bonus</span>
+        </button>
+
+        <!-- 5. Pay Bill -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-5.png" alt="pay bill">
+            <span class="text-xs">Pay Bill</span>
+        </button>
+
+        <!-- 6. Transactions -->
+        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+            <img class="w-8 h-8 mx-auto" src="assets/opt-6.png" alt="transactions">
+            <span class="text-xs">Transactions</span>
+        </button>
+    </div>
+</section>
+
+</body>
+
+</html>
