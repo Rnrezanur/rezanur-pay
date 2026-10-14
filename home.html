@@ -60,55 +60,100 @@
         </section>
     </header>
 
-<section class="w-11/12 mx-auto py-10">
-    <div class="text-2xl font-bold">
-        Welcome to Rezanur <span class="text-blue-600">pay</span>
-    </div>
+    <section class="w-11/12 mx-auto py-10">
+        <div class="text-2xl font-bold">
+            Welcome to Rezanur <span class="text-blue-600">pay</span>
+        </div>
 
-    <p class="text-neutral/50 py-4">
-        Enjoy easy and convenient financial services with us. Cashout charge is low.
-    </p>
+        <p class="text-neutral/50 py-4">
+            Enjoy easy and convenient financial services with us. Cashout charge is low.
+        </p>
 
-    <!-- Single Grid Container for all 6 buttons -->
-    <div class="buttons grid grid-cols-3 gap-3">
-        <!-- 1. Add Money -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-1.png" alt="add money">
-            <span class="text-xs">Add Money</span>
-        </button>
+        <!-- Single Grid Container for all 6 buttons -->
+        <div class="buttons grid grid-cols-3 gap-3">
+            <!-- 1. Add Money -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-1.png" alt="add money">
+                <span class="text-xs">Add Money</span>
+            </button>
 
-        <!-- 2. Cashout -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-2.png" alt="cashout">
-            <span class="text-xs">Cashout</span>
-        </button>
+            <!-- 2. Cashout -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-2.png" alt="cashout">
+                <span class="text-xs">Cashout</span>
+            </button>
 
-        <!-- 3. Send Money -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-3.png" alt="send money">
-            <span class="text-xs">Send Money</span>
-        </button>
+            <!-- 3. Send Money -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-3.png" alt="send money">
+                <span class="text-xs">Send Money</span>
+            </button>
 
-        <!-- 4. Get Bonus -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-4.png" alt="get bonus">
-            <span class="text-xs">Get Bonus</span>
-        </button>
+            <!-- 4. Get Bonus -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-4.png" alt="get bonus">
+                <span class="text-xs">Get Bonus</span>
+            </button>
 
-        <!-- 5. Pay Bill -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-5.png" alt="pay bill">
-            <span class="text-xs">Pay Bill</span>
-        </button>
+            <!-- 5. Pay Bill -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-5.png" alt="pay bill">
+                <span class="text-xs">Pay Bill</span>
+            </button>
 
-        <!-- 6. Transactions -->
-        <button class="btn flex-col h-full py-4 btn-primary btn-soft">
-            <img class="w-8 h-8 mx-auto" src="assets/opt-6.png" alt="transactions">
-            <span class="text-xs">Transactions</span>
-        </button>
-    </div>
-</section>
+            <!-- 6. Transactions -->
+            <button class="btn flex-col h-full py-4 btn-primary btn-soft">
+                <img class="w-8 h-8 mx-auto" src="assets/opt-6.png" alt="transactions">
+                <span class="text-xs">Transactions</span>
+            </button>
+        </div>
+    </section>
 
+    <!-- Cash Out Section -->
+    <section id="cashout-section" class="w-11/12 mx-auto my-6">
+        <h3 class="text-xl font-bold mb-4 text-black">Cash Out</h3>
+
+        <div class="card bg-base-100 shadow-md rounded-3xl p-6">
+            <form id="cashout-form" class="space-y-4">
+
+                <!-- Agent Number -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700">Agent Number</span>
+                    </label>
+                    <input type="tel" id="agent-number" placeholder="Enter 11 digit number" maxlength="11"
+                        class="input input-bordered w-full rounded-full bg-gray-100 border-none px-4" required />
+                </div>
+
+                <!-- Amount -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700">Amount</span>
+                    </label>
+                    <input type="number" id="cashout-amount" placeholder="Enter amount to withdraw"
+                        class="input input-bordered w-full rounded-full bg-gray-100 border-none px-4" required />
+                </div>
+
+                <!-- Pin Number -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold text-gray-700">Pin Number</span>
+                    </label>
+                    <input type="password" id="cashout-pin" placeholder="Enter 4 digit pin number" maxlength="4"
+                        class="input input-bordered w-full rounded-full bg-gray-100 border-none px-4" required />
+                </div>
+
+                <!-- Withdraw Button -->
+                <button type="button" id="btn-withdraw"
+                    class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-base border-none mt-6 py-3">
+                    Withdraw Money
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+    <script src="script/cashout.js"></script>
 </body>
 
 </html>
