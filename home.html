@@ -4,417 +4,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezanur Pay | Home</title>
+    <title>Rezanur Pay — Smart Digital Wallet</title>
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="assets/logo/white_logo-removebg-preview.png" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/logo/rezanur_pay_icon.svg" type="image/svg+xml">
 
-    <!-- tailwind+daisy -->
+    <!-- Tailwind + DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- all theme  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
-    <!-- outfit font -->
+    <!-- Google Font: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
         * {
-            font-family: "Outfit", sans-serif;
+            font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* Hide scrollbars for clean modern view */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
-
 </head>
 
-<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-0 sm:p-4 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
 
-    <header class="border-b-2 border-gray-300">
-        <section class="2-11/12 mx-auto py-3 flex justify-between items-center">
-
-            <div class="left flex ">
-                <div class="logo w-[60px] px-2">
-                    <img src="assets/logo/white_logo-removebg-preview.png" alt="logo-of website">
+    <!-- App Shell Container -->
+    <div class="w-full max-w-md min-h-screen sm:min-h-[800px] bg-slate-50 sm:rounded-3xl shadow-xl border-0 sm:border border-slate-200/80 flex flex-col justify-between relative overflow-hidden pb-20">
+        
+        <!-- Clean Modern Header & Balance Section -->
+        <header class="bg-white px-5 py-4 border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+            <div class="flex items-center justify-between">
+                
+                <!-- Left: Logo & Balance Display -->
+                <div class="flex items-center gap-3">
+                    <a href="#" onclick="showHomeOverview(); return false;" class="block shrink-0 transition-transform hover:scale-105" title="Rezanur Pay">
+                        <img src="assets/logo/rezanur_pay_icon.svg" alt="Rezanur Pay Icon" class="w-12 h-12 drop-shadow-xs">
+                    </a>
+                    <div>
+                        <!-- Interactive Tap for Balance Button -->
+                        <button type="button" id="btn-show-balance" 
+                            class="group relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-slate-700 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-xs select-none">
+                            <span id="balance-pill-icon" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span id="balance-pill-text" class="tracking-wide">Show Balance</span>
+                            <span id="balance-pill-amount" class="hidden text-sm font-black text-slate-900 tracking-tight">$ <span id="balance">45,000.00</span></span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="balance-info ">
-                    <h2 class="text-2xl font-bold">$ <span id="balance">45000</span></h2>
-                    <p class="text-neutral/50">Available Balance</p>
+                <!-- Right: Logout Action -->
+                <div>
+                    <a href="index.html" class="btn btn-sm btn-ghost text-slate-600 hover:text-rose-600 hover:bg-rose-50 gap-1.5 rounded-xl border border-slate-200 px-3 font-semibold" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket text-xs"></i>
+                        <span class="text-xs">Logout</span>
+                    </a>
                 </div>
 
             </div>
+        </header>
 
+        <!-- Main Content Area -->
+        <main class="flex-1 px-5 py-5 space-y-6 overflow-y-auto no-scrollbar">
 
-            <div class="right">
-                <a href="index.html" class="btn btn-soft pr-4">
-                    <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
-                </a>
+            <!-- Welcome Greeting Banner -->
+            <div class="space-y-1">
+                <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+                    Welcome to Rezanur <span class="text-blue-600">pay</span>
+                </h1>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Enjoy easy and convenient financial services with us. Cashout charge is low.
+                </p>
             </div>
 
+            <!-- Services Grid (6 Action Tabs) -->
+            <div>
+                <div class="grid grid-cols-3 gap-2.5">
+                    
+                    <!-- 1. Add Money -->
+                    <button id="btn-add-money-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-building-columns text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">Add Money</span>
+                    </button>
 
-        </section>
-    </header>
+                    <!-- 2. Cash Out -->
+                    <button id="btn-cashout-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-money-bill-transfer text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">Cashout</span>
+                    </button>
 
-    <section class="w-11/12 mx-auto py-10">
-        <div class="text-2xl font-bold">
-            Welcome to Rezanur <span class="text-blue-600">pay</span>
+                    <!-- 3. Transfer Money -->
+                    <button id="btn-transfer-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-paper-plane text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">Transfer</span>
+                    </button>
+
+                    <!-- 4. Get Bonus -->
+                    <button id="btn-bonus-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-gift text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">Get Bonus</span>
+                    </button>
+
+                    <!-- 5. Pay Bill -->
+                    <button id="btn-paybill-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-receipt text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">Pay Bill</span>
+                    </button>
+
+                    <!-- 6. Transactions -->
+                    <button id="btn-transactions-tab"
+                        class="btn-tab flex flex-col items-center justify-center p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-300 hover:bg-slate-50 transition-all cursor-pointer active:scale-95 group">
+                        <div class="w-11 h-11 rounded-2xl bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:scale-110 transition-transform mb-1.5">
+                            <i class="fa-solid fa-clock-rotate-left text-base"></i>
+                        </div>
+                        <span class="tab-label text-xs font-semibold text-slate-700 leading-tight">History</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- ================= INTERACTIVE SECTIONS ================= -->
+
+            <!-- 0. DEFAULT: Latest Payments Overview -->
+            <section id="latest-payment-section" class="form-section space-y-3">
+                <div class="flex items-center justify-between px-1">
+                    <h3 class="text-sm font-extrabold text-slate-800 tracking-tight">Latest Payment</h3>
+                    <button type="button" id="btn-view-all-transactions" class="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                        View All <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+
+                <!-- Dynamic Items Container (Populated by Wallet engine) -->
+                <div id="latest-payment-items" class="space-y-2.5">
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bolt text-amber-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Electricity Bill</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">DESCO Meter #849201 • <span class="text-slate-400 font-medium">Today, 01:44 AM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$85.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-building-columns text-emerald-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Bank Deposit</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">City Bank (Acc ***5892) • <span class="text-slate-400 font-medium">Yesterday, 04:30 PM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-emerald-600 text-xs">+$1,500.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-emerald-50 text-emerald-700 border-emerald-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-mobile-screen text-blue-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Mobile Recharge</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">01712-345678 • <span class="text-slate-400 font-medium">Yesterday, 11:15 AM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$25.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-orange-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-fire-flame-simple text-orange-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Gas Bill</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Titas Gas Prepaid #1920 • <span class="text-slate-400 font-medium">12 Oct, 02:15 PM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$45.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 1. ADD MONEY SECTION -->
+            <section id="add-money-section" class="form-section hidden">
+                <div class="bg-white rounded-3xl p-5 shadow-xs border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                                <i class="fa-solid fa-building-columns text-sm"></i>
+                            </div>
+                            <h3 class="text-base font-extrabold text-slate-800">Add Money</h3>
+                        </div>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <form class="space-y-3.5">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Select Bank / Source</label>
+                            <select id="bank-select" class="select select-bordered w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-700">
+                                <option disabled selected>Select bank</option>
+                                <option>bKash</option>
+                                <option>Nagad</option>
+                                <option>DBBL (Dutch-Bangla Bank)</option>
+                                <option>City Bank</option>
+                                <option>BRAC Bank</option>
+                                <option>Islami Bank</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Bank / Card Account Number</label>
+                            <input id="account-number" type="tel" maxlength="16" placeholder="Enter 11 to 16 digit account number"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700">Amount to Add</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Quick Select</span>
+                            </div>
+                            <input id="add-amount" type="number" placeholder="Enter amount to add"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                            
+                            <!-- Quick Amount Chips -->
+                            <div class="flex items-center gap-1.5 pt-1">
+                                <button type="button" class="chip-add-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="500">+$500</button>
+                                <button type="button" class="chip-add-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="1000">+$1,000</button>
+                                <button type="button" class="chip-add-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="2000">+$2,000</button>
+                                <button type="button" class="chip-add-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-emerald-50 hover:text-emerald-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="5000">+$5,000</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Wallet PIN</label>
+                            <input id="add-money-pin" type="password" maxlength="4" placeholder="Enter 4-digit PIN (Demo: 1212)"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-bold tracking-widest text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <button type="button" id="btn-add-money"
+                            class="btn w-full rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs shadow-md shadow-emerald-600/20 border-none mt-2 h-11">
+                            <i class="fa-solid fa-plus-circle mr-1"></i> Add Money
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 2. CASHOUT SECTION -->
+            <section id="cashout-section" class="form-section hidden">
+                <div class="bg-white rounded-3xl p-5 shadow-xs border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+                                <i class="fa-solid fa-money-bill-transfer text-sm"></i>
+                            </div>
+                            <h3 class="text-base font-extrabold text-slate-800">Cash Out</h3>
+                        </div>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <form class="space-y-3.5">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Agent Mobile Number</label>
+                            <input id="agent-number" type="tel" maxlength="11" placeholder="Enter 11-digit agent number"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700">Withdraw Amount</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Quick Select</span>
+                            </div>
+                            <input id="cashout-amount" type="number" placeholder="Enter amount to withdraw"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                            
+                            <!-- Quick Amount Chips -->
+                            <div class="flex items-center gap-1.5 pt-1">
+                                <button type="button" class="chip-cashout-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="500">$500</button>
+                                <button type="button" class="chip-cashout-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="1000">$1,000</button>
+                                <button type="button" class="chip-cashout-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="2000">$2,000</button>
+                                <button type="button" class="chip-cashout-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="5000">$5,000</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Wallet PIN</label>
+                            <input id="cashout-pin" type="password" maxlength="4" placeholder="Enter 4-digit PIN (Demo: 1212)"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-bold tracking-widest text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <button type="button" id="btn-withdraw"
+                            class="btn w-full rounded-2xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white font-bold text-xs shadow-md shadow-rose-600/20 border-none mt-2 h-11">
+                            <i class="fa-solid fa-arrow-up-from-bracket mr-1"></i> Withdraw Money
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 3. TRANSFER MONEY SECTION -->
+            <section id="transfer-section" class="form-section hidden">
+                <div class="bg-white rounded-3xl p-5 shadow-xs border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
+                            </div>
+                            <h3 class="text-base font-extrabold text-slate-800">Transfer Money</h3>
+                        </div>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <form class="space-y-3.5">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">User Account Number</label>
+                            <input id="transfer-account" type="tel" maxlength="11" placeholder="Enter 11-digit mobile number"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700">Amount</label>
+                                <span class="text-[10px] text-slate-400 font-medium">Quick Select</span>
+                            </div>
+                            <input id="transfer-amount" type="number" placeholder="Enter amount to transfer"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                            
+                            <!-- Quick Amount Chips -->
+                            <div class="flex items-center gap-1.5 pt-1">
+                                <button type="button" class="chip-transfer-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="200">$200</button>
+                                <button type="button" class="chip-transfer-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="500">$500</button>
+                                <button type="button" class="chip-transfer-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="1000">$1,000</button>
+                                <button type="button" class="chip-transfer-amount flex-1 py-1 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-700 text-slate-600 text-[11px] font-bold border border-slate-200 transition-colors" data-amount="2500">$2,500</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Reference Note (Optional)</label>
+                            <input id="transfer-reference" type="text" placeholder="e.g. Dinner, Rent, Gift"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Pin Number</label>
+                            <input id="transfer-pin" type="password" maxlength="4" placeholder="Enter 4-digit PIN (Demo: 1212)"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-bold tracking-widest text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <button type="button" id="btn-transfer"
+                            class="btn w-full rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 border-none mt-2 h-11">
+                            <i class="fa-solid fa-paper-plane mr-1"></i> Send Now
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 4. GET BONUS SECTION (Clean input without instant auto-redeem chips) -->
+            <section id="bonus-section" class="form-section hidden">
+                <div class="bg-white rounded-3xl p-5 shadow-xs border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+                                <i class="fa-solid fa-gift text-sm"></i>
+                            </div>
+                            <h3 class="text-base font-extrabold text-slate-800">Get Bonus</h3>
+                        </div>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <form class="space-y-3.5">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-bold text-slate-700">Enter Bonus Coupon</label>
+                            <input id="bonus-coupon" type="text" placeholder="Enter your coupon code"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-bold uppercase tracking-wider text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <button type="button" id="btn-bonus"
+                            class="btn w-full rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-purple-600/20 border-none mt-2 h-11">
+                            <i class="fa-solid fa-gift mr-1"></i> Get Bonus
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 5. PAY BILL SECTION -->
+            <section id="paybill-section" class="form-section hidden">
+                <div class="bg-white rounded-3xl p-5 shadow-xs border border-slate-200/80 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-solid fa-receipt text-sm"></i>
+                            </div>
+                            <h3 class="text-base font-extrabold text-slate-800">Pay Bill</h3>
+                        </div>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <form class="space-y-3.5">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Select To Pay</label>
+                            <select id="bill-type" class="select select-bordered w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-700">
+                                <option disabled selected>Select biller</option>
+                                <option>DESCO (Electricity)</option>
+                                <option>DPDC (Electricity)</option>
+                                <option>Titas (Gas)</option>
+                                <option>Dhaka WASA (Water)</option>
+                                <option>Amber IT (Internet)</option>
+                                <option>Akash DTH (TV)</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Biller Account Number</label>
+                            <input id="bill-account" type="tel" placeholder="Enter account or meter number"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Amount to Pay</label>
+                            <input id="bill-amount" type="number" placeholder="Enter amount to pay"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-semibold text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Pin Number</label>
+                            <input id="bill-pin" type="password" maxlength="4" placeholder="Enter 4-digit PIN (Demo: 1212)"
+                                class="input w-full rounded-2xl bg-slate-50 border-slate-200 text-xs font-bold tracking-widest text-slate-800 placeholder:text-slate-400" />
+                        </div>
+
+                        <button type="button" id="btn-pay-bill"
+                            class="btn w-full rounded-2xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-bold text-xs shadow-md shadow-amber-600/20 border-none mt-2 h-11">
+                            <i class="fa-solid fa-receipt mr-1"></i> Pay Now
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 6. TRANSACTIONS HISTORY SECTION -->
+            <section id="transactions-section" class="form-section hidden space-y-3.5">
+                <div class="flex items-center justify-between pb-1">
+                    <div>
+                        <h3 class="text-base font-extrabold text-slate-800">Transaction History</h3>
+                        <p class="text-[11px] text-slate-400">Complete record of your wallet ledger</p>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button type="button" id="btn-reset-data" class="px-2.5 py-1 rounded-xl bg-slate-200/80 hover:bg-slate-300 text-slate-700 text-[11px] font-bold transition-all" title="Reset Demo Transactions">
+                            <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Reset
+                        </button>
+                        <button type="button" class="btn-close-section text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="flex items-center gap-1.5 p-1 bg-slate-200/70 rounded-2xl">
+                    <button type="button" class="filter-tab-btn flex-1 py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold transition-all shadow-sm cursor-pointer border-none" data-filter="all">All</button>
+                    <button type="button" class="filter-tab-btn flex-1 py-1.5 rounded-xl bg-transparent text-slate-600 text-xs font-semibold hover:text-slate-900 transition-all cursor-pointer border-none" data-filter="in">Cash In</button>
+                    <button type="button" class="filter-tab-btn flex-1 py-1.5 rounded-xl bg-transparent text-slate-600 text-xs font-semibold hover:text-slate-900 transition-all cursor-pointer border-none" data-filter="out">Cash Out</button>
+                </div>
+
+                <!-- History Items List (Populated by Wallet engine) -->
+                <div id="history-payment-items" class="space-y-2.5">
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bolt text-amber-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Electricity Bill</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">DESCO Meter #849201 • <span class="text-slate-400 font-medium">Today, 01:44 AM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$85.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-building-columns text-emerald-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Bank Deposit</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">City Bank (Acc ***5892) • <span class="text-slate-400 font-medium">Yesterday, 04:30 PM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-emerald-600 text-xs">+$1,500.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-emerald-50 text-emerald-700 border-emerald-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-mobile-screen text-blue-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Mobile Recharge</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">01712-345678 • <span class="text-slate-400 font-medium">Yesterday, 11:15 AM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$25.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-orange-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-fire-flame-simple text-orange-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Gas Bill</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Titas Gas Prepaid #1920 • <span class="text-slate-400 font-medium">12 Oct, 02:15 PM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-slate-900 text-xs">-$45.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-slate-50 text-slate-600 border-slate-200">Success</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-3.5 bg-white rounded-2xl shadow-xs border border-slate-100 hover:border-slate-200 transition-all hover:shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-2xl bg-purple-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-gift text-purple-500 text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-xs leading-tight">Welcome Promo Bonus</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Promo Coupon WELCOME50 • <span class="text-slate-400 font-medium">10 Oct, 09:00 AM</span></p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-extrabold text-emerald-600 text-xs">+$50.00</div>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 text-[9px] font-bold rounded-full border bg-purple-50 text-purple-700 border-purple-200">Success</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Fixed Bottom Navigation Bar -->
+        <nav class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-slate-200/70 py-2.5 px-6 flex items-center justify-between z-30">
+            <button type="button" id="bottom-nav-home" class="flex flex-col items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-bold">Home</span>
+            </button>
+            <button type="button" id="bottom-nav-transfer" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-700 transition-colors">
+                <i class="fa-solid fa-paper-plane text-base"></i>
+                <span class="text-[10px] font-semibold">Transfer</span>
+            </button>
+            <button type="button" id="bottom-nav-history" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-700 transition-colors">
+                <i class="fa-solid fa-clock-rotate-left text-base"></i>
+                <span class="text-[10px] font-semibold">History</span>
+            </button>
+            <a href="index.html" class="flex flex-col items-center gap-1 text-slate-400 hover:text-rose-600 transition-colors">
+                <i class="fa-solid fa-power-off text-base"></i>
+                <span class="text-[10px] font-semibold">Logout</span>
+            </a>
+        </nav>
+
+        <!-- Modern Floating Toast Notification -->
+        <div id="app-toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-2xl opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-white text-sm"></i>
+            <span id="toast-message" class="text-xs font-bold">Transaction completed</span>
         </div>
 
-        <p class="text-neutral/50 py-4">
-            Enjoy easy and convenient financial services with us. Cashout charge is low.
-        </p>
-
-        <!-- Action Buttons Grid -->
-        <section class="w-11/12 mx-auto my-6">
-            <div class="grid grid-cols-3 gap-3">
-                <!-- 1. Add Money -->
-                <button id="btn-add-money-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-1.png" alt="Add Money">
-                    <span class="text-xs font-semibold text-gray-600">Add Money</span>
-                </button>
-
-                <!-- 2. Cashout -->
-                <button id="btn-cashout-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-2.png" alt="Cashout">
-                    <span class="text-xs font-semibold text-gray-600">Cashout</span>
-                </button>
-
-                <!-- 3. Transfer Money -->
-                <button id="btn-transfer-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-3.png" alt="Transfer Money">
-                    <span class="text-xs font-semibold text-gray-600">Transfer Money</span>
-                </button>
-
-                <!-- 4. Get Bonus -->
-                <button id="btn-bonus-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-4.png" alt="Get Bonus">
-                    <span class="text-xs font-semibold text-gray-600">Get Bonus</span>
-                </button>
-
-                <!-- 5. Pay Bill -->
-                <button id="btn-paybill-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-5.png" alt="Pay Bill">
-                    <span class="text-xs font-semibold text-gray-600">Pay Bill</span>
-                </button>
-
-                <!-- 6. Transactions -->
-                <button id="btn-transactions-tab"
-                    class="btn-tab btn flex-col h-full py-4 bg-white border border-gray-200 rounded-2xl">
-                    <img class="w-8 h-8 mx-auto" src="assets/opt-6.png" alt="Transactions">
-                    <span class="text-xs font-semibold text-gray-600">Transactions</span>
-                </button>
-            </div>
-        </section>
-        <!-- DEFAULT: Latest Payment List (Visible on initial page load) -->
-        <section id="latest-payment-section" class="form-section w-11/12 mx-auto my-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-black">Latest Payment</h3>
-                <button class="text-sm text-gray-500 hover:text-black">View All</button>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Item 1 -->
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Electricity Bill">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Electricity Bill</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
+        <!-- Modern Digital Receipt Modal -->
+        <dialog id="receipt-modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box bg-white rounded-3xl p-6 max-w-sm mx-auto border border-slate-100 shadow-2xl">
+                
+                <!-- Success Emblem -->
+                <div class="text-center pt-2">
+                    <div class="w-14 h-14 rounded-full bg-emerald-50 text-emerald-600 mx-auto flex items-center justify-center text-2xl shadow-xs mb-3">
+                        <i class="fa-solid fa-check"></i>
                     </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    <h3 id="receipt-title" class="text-lg font-black text-slate-900 leading-tight">Payment Successful</h3>
+                    <p id="receipt-service" class="text-xs text-slate-500 mt-0.5">Wallet Service</p>
+                    
+                    <!-- Amount Highlight -->
+                    <div class="my-4 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                        <div id="receipt-amount" class="text-2xl font-black text-slate-900">$0.00</div>
+                        <div class="text-[10px] text-slate-400 font-semibold mt-0.5">Transaction Amount</div>
+                    </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Bank Deposit">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Bank Deposit</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
+                <!-- Receipt Line Items -->
+                <div class="space-y-2 text-xs py-2 border-y border-slate-100">
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-400">Transaction ID</span>
+                        <span id="receipt-trx-id" class="font-mono font-bold text-slate-700">TXN-000000</span>
                     </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-400">Recipient / Target</span>
+                        <span id="receipt-recipient" class="font-semibold text-slate-800">Account</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-400">Date & Time</span>
+                        <span id="receipt-time" class="font-semibold text-slate-800">Just now</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-400">Available Balance</span>
+                        <span id="receipt-balance" class="font-bold text-blue-600">$45,000.00</span>
+                    </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Mobile Recharge">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Mobile Recharge</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                </div>
-
-                <!-- Item 4 -->
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Gas Bill">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Gas Bill</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
+                <!-- Modal Actions -->
+                <div class="modal-action mt-5">
+                    <form method="dialog" class="w-full">
+                        <button class="btn w-full rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs border-none shadow-md shadow-blue-500/20 h-11">
+                            Done & Close
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
 
-        <!-- 1. Add Money Section -->
-        <section id="add-money-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <h3 class="text-xl font-bold mb-4 text-black">Add Money</h3>
-            <div class="card bg-base-100 shadow-sm rounded-3xl p-6">
-                <form class="space-y-4">
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Select A
-                                Bank</span></label>
-                        <select
-                            class="select select-bordered w-full rounded-full bg-gray-100 border-none px-4 text-gray-500">
-                            <option disabled selected>Select bank</option>
-                            <option>bKash</option>
-                            <option>Nagad</option>
-                            <option>DBBL</option>
-                        </select>
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Bank Account
-                                Number</span></label>
-                        <input type="tel" maxlength="11" placeholder="Enter 11 digit account number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Amount to
-                                Add</span></label>
-                        <input type="number" placeholder="Add Amount to withdraw"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Pin
-                                Number</span></label>
-                        <input type="password" maxlength="4" placeholder="Enter 4 digit pin number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <button type="button"
-                        class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold border-none mt-4">Add
-                        Money</button>
-                </form>
-            </div>
-        </section>
+    </div>
 
-        <!-- 2. Cash Out Section -->
-        <section id="cashout-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <h3 class="text-xl font-bold mb-4 text-black">Cash Out</h3>
-            <div class="card bg-base-100 shadow-sm rounded-3xl p-6">
-                <form class="space-y-4">
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Agent
-                                Number</span></label>
-                        <input type="tel" maxlength="11" placeholder="Enter 11 digit number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Amount</span></label>
-                        <input type="number" placeholder="Enter amount to withdraw"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Pin
-                                Number</span></label>
-                        <input type="password" maxlength="4" placeholder="Enter 4 digit pin number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <button type="button"
-                        class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold border-none mt-4">Withdraw
-                        Money</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 3. Transfer Money Section -->
-        <section id="transfer-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <h3 class="text-xl font-bold mb-4 text-black">Transfer Money</h3>
-            <div class="card bg-base-100 shadow-sm rounded-3xl p-6">
-                <form class="space-y-4">
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">User Account
-                                Number</span></label>
-                        <input type="tel" maxlength="11" placeholder="Enter 11 digit number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Amount</span></label>
-                        <input type="number" placeholder="Enter amount to transfer"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Pin
-                                Number</span></label>
-                        <input type="password" maxlength="4" placeholder="Enter 4 digit pin number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <button type="button"
-                        class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold border-none mt-4">Send
-                        Now</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 4. Get Bonus Section -->
-        <section id="bonus-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <h3 class="text-xl font-bold mb-4 text-black">Get Bonus</h3>
-            <div class="card bg-base-100 shadow-sm rounded-3xl p-6">
-                <form class="space-y-4">
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Enter Bonus
-                                Coupon</span></label>
-                        <input type="text" placeholder="Enter your coupon"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <button type="button"
-                        class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold border-none mt-4">Get
-                        Bonus</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 5. Pay Bill Section -->
-        <section id="paybill-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <h3 class="text-xl font-bold mb-4 text-black">Pay Bill</h3>
-            <div class="card bg-base-100 shadow-sm rounded-3xl p-6">
-                <form class="space-y-4">
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Select To
-                                Pay</span></label>
-                        <select
-                            class="select select-bordered w-full rounded-full bg-gray-100 border-none px-4 text-gray-500">
-                            <option disabled selected>Select bank</option>
-                            <option>DESCO (Electricity)</option>
-                            <option>Titas (Gas)</option>
-                            <option>WASA (Water)</option>
-                            <option>Internet Bill</option>
-                        </select>
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Biller Account
-                                Number</span></label>
-                        <input type="tel" placeholder="Enter account number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Amount to
-                                Pay</span></label>
-                        <input type="number" placeholder="Add Amount to pay"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <div class="form-control">
-                        <label class="label"><span class="label-text font-semibold text-gray-700">Pin
-                                Number</span></label>
-                        <input type="password" maxlength="4" placeholder="Enter 4 digit pin number"
-                            class="input w-full rounded-full bg-gray-100 border-none px-4" />
-                    </div>
-                    <button type="button"
-                        class="btn w-full rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold border-none mt-4">Pay
-                        Now</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- 6. Transactions Section -->
-        <section id="transactions-section" class="form-section w-11/12 mx-auto my-6 hidden">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold text-black">Transaction History</h3>
-                <button class="text-sm text-gray-500 hover:text-black">View All</button>
-            </div>
-
-            <div class="space-y-3">
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Electricity Bill">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Electricity Bill</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                </div>
-
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Bank Deposit">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Bank Deposit</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                </div>
-
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Mobile Recharge">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Mobile Recharge</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                </div>
-
-                <div
-                    class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                            <img src="assets/opt-1.png" class="w-6 h-6" alt="Gas Bill">
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm">Gas Bill</h4>
-                            <p class="text-xs text-gray-400">Today 01:44 AM</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-ellipsis-vertical text-gray-400"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- cash out -->
-        <script src="script/cashout.js"></script>
-
-        <!-- addmoney -->
-        <script src="script/addMoney.js"></script>
+    <!-- Scripts -->
+    <script src="script/wallet.js"></script>
+    <script src="script/toggle.js"></script>
+    <script src="script/addMoney.js"></script>
+    <script src="script/cashout.js"></script>
+    <script src="script/transfer.js"></script>
+    <script src="script/bonus.js"></script>
+    <script src="script/payBill.js"></script>
 </body>
 
 </html>

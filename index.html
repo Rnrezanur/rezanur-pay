@@ -4,67 +4,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezanur Pay</title>
+    <title>Rezanur Pay — Smart Digital Wallet</title>
 
-    <!-- favicon -->
-    <link rel="shortcut icon" href="assets/logo/white_logo-removebg-preview.png" type="image/x-icon">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/logo/rezanur_pay_icon.svg" type="image/svg+xml">
 
-    <!-- tailwind+daisy -->
+    <!-- Tailwind + DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- all theme  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
-    <!-- outfit font -->
+    <!-- Google Font: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
-        integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
         * {
-            font-family: "Outfit", sans-serif;
+            font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake-animation {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .ambient-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.10) 0%, rgba(79, 70, 229, 0.04) 50%, transparent 80%);
         }
     </style>
-
 </head>
 
-<body class="min-h-screen max-w-md bg-base-200 mx-auto">
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-0 sm:p-4 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- logo for login page -->
-    <div class="logo w-[300px] mx-auto pt-60">
-        <img src="assets/logo/white_full_logo-removebg-preview.png" alt="">
+    <!-- App Container -->
+    <div class="w-full max-w-md min-h-screen sm:min-h-[720px] bg-white sm:rounded-3xl shadow-xl border-0 sm:border border-slate-200/80 flex flex-col justify-between relative overflow-hidden">
+        
+        <!-- Ambient decorative backdrop glow -->
+        <div class="ambient-glow absolute inset-0 pointer-events-none"></div>
+
+        <!-- Brand Logo Header -->
+        <header class="pt-10 px-6 z-10 text-center">
+            <div class="inline-block transition-transform hover:scale-105 duration-300">
+                <img src="assets/logo/rezanur_pay_logo.svg" alt="Rezanur Pay Logo" class="h-16 w-auto mx-auto drop-shadow-xs">
+            </div>
+            <h1 class="text-2xl font-black tracking-tight text-slate-900 mt-4">Welcome Back</h1>
+            <p class="text-xs text-slate-500 mt-1">Log in securely to your digital wallet</p>
+        </header>
+
+        <!-- Main Login Card & Form -->
+        <main class="px-6 py-6 z-10 flex-1 flex flex-col justify-center">
+            <form id="login-form" class="space-y-4" novalidate>
+                
+                <!-- Mobile Number Input -->
+                <div class="space-y-1.5">
+                    <label for="input-number" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                        <i class="fa-solid fa-mobile-screen-button text-blue-600 text-xs"></i>
+                        Mobile Number
+                    </label>
+                    <div class="relative flex items-center">
+                        <input id="input-number" maxlength="11" type="tel" inputmode="numeric"
+                            class="input w-full px-4 h-12 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-sm font-semibold text-slate-800 placeholder:text-slate-400 transition-all outline-none"
+                            placeholder="Enter 11 Digit Mobile Number" autocomplete="tel" required />
+                    </div>
+                </div>
+
+                <!-- 4 Digit Pin Input -->
+                <div class="space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <label for="input-pin" class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-shield-halved text-blue-600 text-xs"></i>
+                            4-Digit PIN
+                        </label>
+                        <button type="button" id="forgot-pin-btn" class="text-[11px] font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                            Forgot PIN?
+                        </button>
+                    </div>
+                    <div class="relative flex items-center">
+                        <input id="input-pin" type="password" maxlength="4" inputmode="numeric"
+                            class="input w-full px-4 pr-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-sm font-semibold tracking-widest text-slate-800 placeholder:text-slate-400 transition-all outline-none"
+                            placeholder="••••" autocomplete="current-password" required />
+                        
+                        <button type="button" id="toggle-pin-btn" class="absolute right-3 text-slate-400 hover:text-slate-600 p-1 transition-colors" title="Toggle PIN visibility">
+                            <i class="fa-regular fa-eye" id="toggle-pin-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="flex items-center justify-between pt-1">
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                        <input type="checkbox" id="remember-me" checked class="checkbox checkbox-primary checkbox-xs rounded-md" />
+                        <span class="text-xs text-slate-600 font-medium">Remember my number</span>
+                    </label>
+                </div>
+
+                <!-- Dynamic Error Notification Container -->
+                <div id="login-error" class="hidden p-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2.5 transition-all">
+                    <i class="fa-solid fa-circle-exclamation text-rose-500 text-sm shrink-0"></i>
+                    <span id="error-message">Invalid phone number or PIN.</span>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" id="login-btn"
+                    class="btn w-full h-12 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold text-sm shadow-md shadow-blue-500/20 border-none active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2">
+                    <span id="login-btn-text">Log In</span>
+                    <i class="fa-solid fa-arrow-right text-xs" id="login-btn-icon"></i>
+                    <span id="login-spinner" class="loading loading-spinner loading-sm hidden"></span>
+                </button>
+
+                <!-- Demo Credentials Quick Pill -->
+                <div class="p-3.5 bg-blue-50/70 border border-blue-100 rounded-2xl flex items-center justify-between text-xs text-slate-600 transition-colors hover:bg-blue-50">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                        <div>
+                            <span class="font-bold text-slate-800">Demo:</span> 
+                            <span class="font-mono text-blue-700 font-semibold">01869529572</span> 
+                            <span class="text-slate-400">|</span> 
+                            <span class="font-mono text-blue-700 font-semibold">1212</span>
+                        </div>
+                    </div>
+                    <button type="button" id="demo-autofill-btn"
+                        class="px-2.5 py-1 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold shadow-xs transition-all active:scale-95 cursor-pointer">
+                        Auto-Fill
+                    </button>
+                </div>
+
+            </form>
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-5 text-center z-10 border-t border-slate-100">
+            <p class="text-[11px] text-slate-400">© 2026 Rezanur Pay. All rights reserved.</p>
+        </footer>
 
     </div>
 
-    <!-- login form -->
-
-<section class="form pt-10">
-        <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm mx-auto rounded-2xl">
-        <div class="card-body">
-            <fieldset class="fieldset">
-                
-                <label class="label text-neutral font-bold">Mobile Number</label>
-                <input id="input-number" maxlength="11" minlength="11" type="tel" class="input rounded-full bg-base-200" placeholder="Enter Your 11 Digit Number" />
-                
-                <label class="labe text-neutral font-bold pt-2">4 Digit Pin</label>
-                <input id="input-pin" type="password" minlength="4" maxlength="4"  class="input rounded-full bg-base-200" placeholder="Enter 4 Digit Pin" />
-                
-                <button class="btn btn-primary mt-4 rounded-full" id="login-btn">Login</button>
-            </fieldset>
-        </div>
-    </div>
-</section>
-
-
-
-
-<script src="script/login.js"></script>
+    <!-- Script -->
+    <script src="script/login.js"></script>
 </body>
 
 </html>
